@@ -1,5 +1,8 @@
-# Import openCV library
-import cv2
+# Import openCV and dlib library
+import cv2, dlib
+
+# Use get_frontal_face_detector in dlib library to detect faces from a frame
+faceDetector = dlib.get_frontal_face_detector()
 
 # Continously take input from user until he/she chooses to exit
 while True:
@@ -59,7 +62,16 @@ while True:
         # Convert the captured frame(image) to grayscale
         capturedFrame = cv2.cvtColor(capturedFrame, cv2.COLOR_BGR2GRAY)
         
+        # Use dlib library to detect and retrieve the list of faces present in a frame at a time
+        detected_faces,_,_ = faceDetector.run(image = capturedFrame, adjust_threshold = 0.0, upsample_num_times = 0)
+
+        # Count and display the number of faces present in a frame at a time
+        count = 0
+        for face in detected_faces:
+            count += 1
+        print("Number of faces in the present frame: ", count)
         
+        # Display the frame in the previously created openCV window
         cv2.imshow('EyeBlinkDetector', capturedFrame)
         
         # Check if user has pressed 'q' key. If yes then exit from while loop
