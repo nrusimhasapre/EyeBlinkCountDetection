@@ -1,4 +1,4 @@
-# EyeBlinkCountDetection
+# Eye Blink Count Detection By Team-13 
 The project can be run using Spyder in Anaconda.<br />
 Steps:<br />
 •	Open Anaconda Navigator.<br />
